@@ -1,0 +1,7 @@
+- name: Update Cryto Policies
+  block:
+
+    - name: Update Crypto Policies
+      become: yes
+      shell:
+        cmd: update-crypto-policies --set DEFAULT:AD-SUPPORT-LEGACY

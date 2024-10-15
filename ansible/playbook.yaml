@@ -1,0 +1,54 @@
+---
+- name: Image Build
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+
+  tasks:
+  #   - name: Apply Oracle 7 Specific Configurations
+  #     import_role:
+  #       name: oracle7
+  #     when:
+  #       - ansible_distribution|lower == 'oraclelinux'
+  #       - ansible_distribution_major_version is version_compare('7', '==')
+
+  #   - name: Apply System Agent Configurations
+  #     import_role:
+  #       name: agents
+
+    - name: Install latest packages
+      package:
+        name:
+          - epel-release
+          - git
+          - net-tools
+          - openssl
+          - htop
+          - atop
+          - python3-pip
+          - zip
+          - unzip
+          - mc
+          - ncdu
+          - bind-utils
+          - vim
+          - iptables-services
+        state: present
+
+    - name: Install SSSD packages
+      package:
+        name:
+          - realmd
+          - oddjob
+          - oddjob-mkhomedir
+          - sssd
+          - adcli
+          - krb5-workstation
+        state: present
+
+    - name: Apply Rokcy Linux Configuration
+      import_role:
+        name: rocky-linux
+    # - name: Apply CentOS 7 Carbon Black Configuration
+    #   import_role:
+    #     name: centos7-carbonblack

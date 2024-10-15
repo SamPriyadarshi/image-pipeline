@@ -1,0 +1,12 @@
+- name: Disable selinux
+  block:
+
+    - name: Disable selinux
+      become: yes
+      shell:
+        cmd: sed -i 's|enforcing|disabled|g' /etc/selinux/config && sestatus
+
+    - name: Disable firewall
+      become: yes
+      shell:
+        cmd: systemctl disable firewalld
