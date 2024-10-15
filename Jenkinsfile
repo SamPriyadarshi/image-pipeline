@@ -4,10 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your project code from Git
-                git branch: 'main', 
-                    credentialsId: 'your-github-credentials-id', 
-                    url: 'https://github.com/your-username/your-repo.git' 
+             checkout scm
+            }
+        }
+
+          stage('Init') {
+            steps {
+            sh 'packer init ./packer/'
             }
         }
 
@@ -26,3 +29,4 @@ pipeline {
         }
     }
 }
+
