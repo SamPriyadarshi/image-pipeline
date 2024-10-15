@@ -26,6 +26,11 @@ variable "source_image" {
   default = "rocky-linux-9"
 }
 
+variable "service_account" {
+  type = string
+  default = "liquibase-sa@mando-host-project.iam.gserviceaccount.com"
+}
+
 source "googlecompute" "rocky-linux-9" {
   image_name              = "rocky-linux-{{timestamp}}"
   machine_type            = "n1-standard-1"
@@ -41,6 +46,6 @@ build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
   provisioner "ansible" {
-    playbook_file           = "./ansible/playbook.yml"
+    playbook_file           = "../ansible/playbook.yaml"
   }
 }
