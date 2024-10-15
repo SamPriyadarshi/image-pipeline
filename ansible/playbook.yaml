@@ -19,7 +19,7 @@
     - name: Install latest packages
       package:
         name:
-          - epel-release
+          # - epel-release
           - git
           - net-tools
           - openssl
@@ -32,7 +32,7 @@
           - ncdu
           - bind-utils
           - vim
-          - iptables-services
+          # - iptables-services
         state: present
 
     - name: Install SSSD packages
@@ -43,7 +43,7 @@
           - oddjob-mkhomedir
           - sssd
           - adcli
-          - krb5-workstation
+          # - krb5-workstation
         state: present
 
     - name: Apply Rokcy Linux Configuration
