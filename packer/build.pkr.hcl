@@ -46,6 +46,6 @@ build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
   provisioner "ansible" {
-    playbook_file           = "../ansible/playbook.yaml"
+    playbook_file           = "./ansible/playbook.yaml"
   }
 }
