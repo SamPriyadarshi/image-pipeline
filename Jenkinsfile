@@ -23,7 +23,7 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                // Build the image using Packer
+                // Build using Packer
                 sh 'packer build ./packer/'
             }
         }
