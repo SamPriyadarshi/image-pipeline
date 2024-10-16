@@ -2,8 +2,9 @@
 - name: Image Build
   hosts: 127.0.0.1
   connection: local
-  become: true
-  become_user: root
+  ansible_become: true
+  ansible_become_method: sudo
+  ansible_become_user: root
 
   tasks:
   #   - name: Apply Oracle 7 Specific Configurations
