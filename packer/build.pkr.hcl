@@ -18,7 +18,7 @@ variable "zone" {
 
 variable "project_id" {
   type = string
-  default = "mando-host-project"
+  default = "symbotic-dev-433806"
 }
 
 variable "source_image" {
@@ -28,7 +28,7 @@ variable "source_image" {
 
 variable "service_account" {
   type = string
-  default = "liquibase-sa@mando-host-project.iam.gserviceaccount.com"
+  default = "jenkin@symbotic-dev-433806.iam.gserviceaccount.com"
 }
 
 source "googlecompute" "rocky-linux-9" {
