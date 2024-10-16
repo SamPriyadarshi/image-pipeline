@@ -46,6 +46,10 @@ build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
   provisioner "ansible" {
+    ansible_env_vars        = ["PACKER_ANSIBLE_TEST=1", "ANSIBLE_HOST_KEY_CHECKING=False"]
+    empty_groups            = ["PACKER_EMPTY_GROUP"]
+    extra_arguments         = ["--private-key", "ansible-test-id"]
+    groups                  = ["PACKER_TEST"]
     playbook_file           = "./ansible/playbook.yaml"
   }
 }
