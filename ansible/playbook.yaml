@@ -3,7 +3,6 @@
   hosts: 127.0.0.1
   connection: local
   # become: yes
-  become_user: packer
 
   tasks:
   #   - name: Apply Oracle 7 Specific Configurations
@@ -18,9 +17,6 @@
   #       name: agents
 
     - name: Install latest packages
-      become: yes
-      become_user: packer
-      become_method: sudo
       package:
         name:
           # - epel-release
