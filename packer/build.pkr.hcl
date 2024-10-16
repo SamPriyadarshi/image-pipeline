@@ -36,7 +36,6 @@ source "googlecompute" "rocky-linux-9" {
   machine_type            = "n1-standard-1"
   source_image_family     = var.source_image
   ssh_username            = "packer"
-  ssh_password            = "packer"
   use_os_login            = true
   zone                    = var.zone
   project_id              = var.project_id
@@ -56,6 +55,7 @@ build {
       "sudo dnf update -y",
       "sudo dnf install epel-release -y",
       "sudo dnf install ansible -y",
+      "sudo install -d -o ${build.User} ${local.packer_work_dir} ${local.ansible_staging_dir}",
     ]
     remote_folder = "/home/packer"
   }
