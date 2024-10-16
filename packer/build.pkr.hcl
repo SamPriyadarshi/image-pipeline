@@ -51,13 +51,13 @@ source "googlecompute" "rocky-linux-9" {
 build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
-  provisioner "shell" [
+  provisioner "shell" {
     inline = [
       "sudo dnf update -y"
       "sudo dnf install epel-release -y"
       "sudo dnf install ansible -y"
     ]
-  ]
+  }
 
   provisioner "ansible-local" {
     playbook_file           = "./ansible/playbook.yaml"
