@@ -61,5 +61,6 @@ build {
 
   provisioner "ansible-local" {
     playbook_file           = "./ansible/playbook.yaml"
+    staging_directory       = local.ansible_staging_dir
   }
 }
