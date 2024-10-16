@@ -53,9 +53,9 @@ build {
 
   provisioner "shell" {
     inline = [
-      "sudo dnf update -y"
-      "sudo dnf install epel-release -y"
-      "sudo dnf install ansible -y"
+      "sudo dnf update -y",
+      "sudo dnf install epel-release -y",
+      "sudo dnf install ansible -y",
     ]
   }
 
