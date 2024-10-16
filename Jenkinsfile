@@ -1,6 +1,11 @@
 pipeline {
     agent any 
-    GOOGLE_APPLICATION_CREDENTIALS = credentials('GCP_CREDENTIAL')
+    environment {
+        //adding gcp credentials
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('GCP_CREDENTIAL')
+    
+     }
+
 
     stages {
         stage('Checkout') {
