@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        //adding gcp credentials
+        //using mando gcp credentials
         GOOGLE_APPLICATION_CREDENTIALS = credentials('svc-mando')
     
      }
