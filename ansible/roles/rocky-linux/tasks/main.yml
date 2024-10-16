@@ -4,8 +4,8 @@
 # - name: Disable Selinux
 #   import_tasks: disable-selinux.yaml
 
-- name: Enable Password Auth
-  import_tasks: enable-password-auth.yaml
+# - name: Enable Password Auth
+#   import_tasks: enable-password-auth.yaml
 
 - name: Install pip packages
   import_tasks: pip-packages.yaml
