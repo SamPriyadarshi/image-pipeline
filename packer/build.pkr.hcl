@@ -41,12 +41,17 @@ source "googlecompute" "rocky-linux-9" {
   zone                    = var.zone
   project_id              = var.project_id
   # service_account_email   = var.service_account
+  # metadata = {
+  #     enable-guest-attributes = "TRUE",
+  #     enable-osconfig = "TRUE",
+  #     enable-oslogin = "FALSE",
+  #   }
 }
 
 build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
-  provisioner "ansible" {
+  provisioner "ansible-local" {
     playbook_file           = "./ansible/playbook.yaml"
   }
 }
