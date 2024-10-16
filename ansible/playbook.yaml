@@ -17,6 +17,7 @@
   #       name: agents
 
     - name: Install latest packages
+      become: yes
       package:
         name:
           # - epel-release
