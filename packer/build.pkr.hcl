@@ -57,9 +57,11 @@ build {
       "sudo dnf install epel-release -y",
       "sudo dnf install ansible -y",
     ]
+    remote_folder = "/home/packer"
   }
 
   provisioner "ansible-local" {
+    playbook_dir            = "./ansible"
     playbook_file           = "./ansible/playbook.yaml"
     staging_directory       = local.ansible_staging_dir
   }
