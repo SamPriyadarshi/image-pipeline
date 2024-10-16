@@ -30,7 +30,7 @@
           - unzip
           - mc
           - ncdu
-          - bind-utils
+          # - bind-utils
           - vim
           # - iptables-services
         state: present
