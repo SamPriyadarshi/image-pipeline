@@ -18,7 +18,7 @@ variable "zone" {
 
 variable "project_id" {
   type = string
-  default = "symbotic-dev-433806"
+  default = "mando-host-project"
 }
 
 variable "source_image" {
@@ -28,7 +28,7 @@ variable "source_image" {
 
 variable "service_account" {
   type = string
-  default = "jenkin@symbotic-dev-433806.iam.gserviceaccount.com"
+  default = "liquibase-sa@symbotic-dev-433806.iam.gserviceaccount.com"
 }
 
 source "googlecompute" "rocky-linux-9" {
@@ -39,17 +39,13 @@ source "googlecompute" "rocky-linux-9" {
   use_os_login            = true
   zone                    = var.zone
   project_id              = var.project_id
-  service_account_email   = var.service_account
+  # service_account_email   = var.service_account
 }
 
 build {
   sources = ["source.googlecompute.rocky-linux-9"]
 
   provisioner "ansible" {
-    ansible_env_vars        = ["PACKER_ANSIBLE_TEST=1", "ANSIBLE_HOST_KEY_CHECKING=False"]
-    empty_groups            = ["PACKER_EMPTY_GROUP"]
-    extra_arguments         = ["--private-key", "ansible-test-id"]
-    groups                  = ["PACKER_TEST"]
     playbook_file           = "./ansible/playbook.yaml"
   }
 }
