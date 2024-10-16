@@ -57,7 +57,6 @@ build {
       "sudo dnf install ansible -y",
       "sudo install -d -o ${build.User} ${local.packer_work_dir} ${local.ansible_staging_dir}",
     ]
-    remote_folder = "/home/packer"
   }
 
   provisioner "ansible-local" {
