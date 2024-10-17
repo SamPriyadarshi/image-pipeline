@@ -28,7 +28,7 @@ variable "source_image" {
 
 variable "service_account" {
   type = string
-  default = "liquibase-sa@symbotic-dev-433806.iam.gserviceaccount.com"
+  default = "jenkins@mando-host-project.iam.gserviceaccount.com"
 }
 
 source "googlecompute" "rocky-linux-9" {
@@ -39,12 +39,7 @@ source "googlecompute" "rocky-linux-9" {
   use_os_login            = true
   zone                    = var.zone
   project_id              = var.project_id
-  # service_account_email   = var.service_account
-  # metadata = {
-  #     enable-guest-attributes = "TRUE",
-  #     enable-osconfig = "TRUE",
-  #     enable-oslogin = "FALSE",
-  #   }
+  service_account_email   = var.service_account
 }
 
 build {
@@ -56,6 +51,10 @@ build {
       "sudo dnf install epel-release -y",
       "sudo dnf install ansible -y",
       "sudo install -d -o ${build.User} ${local.packer_work_dir} ${local.ansible_staging_dir}",
+      "gcloud config set project mando-host-project",
+      "gcloud secrets versions access 1  --secret=sam-cert --out-file=/etc/pki/ca-trust/source/anchors/sam.corp_CA.cer",
+      "update-ca-trust",
+      "systemctl disable firewalld",
     ]
   }
 
