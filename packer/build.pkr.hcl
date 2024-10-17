@@ -40,6 +40,10 @@ source "googlecompute" "rocky-linux-9" {
   zone                    = var.zone
   project_id              = var.project_id
   service_account_email   = var.service_account
+  scopes                  = [
+      "https://www.googleapis.com/auth/cloud-platform"
+]
+  ]
 }
 
 build {
