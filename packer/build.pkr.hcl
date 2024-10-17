@@ -42,7 +42,6 @@ source "googlecompute" "rocky-linux-9" {
   service_account_email   = var.service_account
   scopes                  = [
       "https://www.googleapis.com/auth/cloud-platform"
-]
   ]
 }
 
