@@ -53,7 +53,7 @@ build {
       "sudo dnf update -y",
       "sudo dnf install epel-release -y",
       "sudo dnf install ansible -y",
-      "sudo install -d -o ${build.User} ${local.packer_work_dir} ${local.ansible_staging_dir}",
+      "sudo install -d -o ${build.User} ${local.packer_work_dir} ${local.ansible_staging_dir} /etc/pki/ca-trust/source/anchors/",
       "gcloud config set project mando-host-project",
       "gcloud secrets versions access 1  --secret=sam-cert --out-file=/etc/pki/ca-trust/source/anchors/sam.corp_CA.cer",
       "update-ca-trust",
